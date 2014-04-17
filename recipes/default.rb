@@ -1,2 +1,2 @@
-include_recipe 'sprout-osx-apps::rubymine'
+package 'rubymine'
 include_recipe 'sprout-osx-rubymine::preferences'
