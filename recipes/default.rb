@@ -1,2 +1,2 @@
 sprout_homebrew_cask 'rubymine'
-include_recipe 'sprout-osx-rubymine::preferences'
+include_recipe 'sprout-rubymine::preferences'

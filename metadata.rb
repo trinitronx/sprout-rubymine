@@ -1,4 +1,4 @@
-name 'sprout-osx-rubymine'
+name 'sprout-rubymine'
 maintainer 'Pivotal Labs'
 maintainer_email 'accounts@pivotallabs.com'
 license 'MIT'
