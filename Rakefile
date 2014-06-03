@@ -8,4 +8,4 @@ task :foodcritic do
   sh 'foodcritic . -f any'
 end
 
-Rubocop::RakeTask.new
+RuboCop::RakeTask.new
