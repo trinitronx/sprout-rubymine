@@ -1,27 +1,33 @@
+require 'time'
+
 preferences = node['sprout']['rubymine']['preferences']
 
-git preferences['clone'] do
+git preferences['clone_dir'] do
   repository preferences['repository']
   revision preferences['revision']
   action :sync
   user node['current_user']
 end
 
-subdirs = preferences['files'].map do |file|
-  File.dirname(file)
-end.uniq
-
-subdirs.each do |subdir|
-  recursive_directories [preferences['dir'], subdir] do
-    owner node['current_user']
-    mode '0755'
-    recursive true
-  end
+directory preferences['install_dir'] do
+  owner node['current_user']
+  mode '0755'
+  action :create
 end
 
-preferences['files'].each do |file|
-  link "#{preferences['dir']}/#{file}" do
-    to "#{preferences['clone']}/RubyMineXX/#{file}"
+backup_time = Time.now.utc.iso8601
+
+preferences['dirs_to_link'].each do |dir_to_link|
+  execute "Backup #{::File.join(preferences['install_dir'], dir_to_link)}" do
+    command <<-CMD
+              mv \
+                #{::File.join(preferences['install_dir'], dir_to_link)} \
+                #{::File.join(preferences['install_dir'], dir_to_link)}.bak.#{backup_time}
+    CMD
+  end
+
+  link ::File.join(preferences['install_dir'], dir_to_link) do
+    to ::File.join(preferences['clone_dir'], 'RubyMineXX', dir_to_link)
     owner node['current_user']
   end
 end
