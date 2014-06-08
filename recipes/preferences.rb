@@ -24,6 +24,7 @@ preferences['dirs_to_link'].each do |dir_to_link|
                 #{::File.join(preferences['install_dir'], dir_to_link)} \
                 #{::File.join(preferences['install_dir'], dir_to_link)}.bak.#{backup_time}
     CMD
+    only_if { File.exist?(File.join(preferences['install_dir'], dir_to_link)) }
   end
 
   link ::File.join(preferences['install_dir'], dir_to_link) do
