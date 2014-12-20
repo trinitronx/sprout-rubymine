@@ -6,11 +6,11 @@ git preferences['clone_dir'] do
   repository preferences['repository']
   revision preferences['revision']
   action :sync
-  user node['current_user']
+  user node['sprout']['user']
 end
 
 directory preferences['install_dir'] do
-  owner node['current_user']
+  owner node['sprout']['user']
   mode '0755'
   action :create
 end
@@ -29,6 +29,6 @@ preferences['dirs_to_link'].each do |dir_to_link|
 
   link ::File.join(preferences['install_dir'], dir_to_link) do
     to ::File.join(preferences['clone_dir'], 'RubyMineXX', dir_to_link)
-    owner node['current_user']
+    owner node['sprout']['user']
   end
 end
