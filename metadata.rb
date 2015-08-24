@@ -1,6 +1,6 @@
 name 'sprout-rubymine'
 maintainer 'Pivotal Labs'
-maintainer_email 'accounts@pivotallabs.com'
+maintainer_email 'sprout-maintainers@googlegroups.com'
 license 'MIT'
 description 'Recipes to manage Rubymine on OSX'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
