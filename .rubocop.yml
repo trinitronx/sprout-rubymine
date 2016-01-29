@@ -1,6 +1,0 @@
-LineLength:
-  Max: 120
-AllCops:
-  Exclude:
-    - cookbooks/**/*
-    - tmp/**/*
