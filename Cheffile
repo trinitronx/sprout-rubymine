@@ -1,0 +1,6 @@
+site 'https://supermarket.getchef.com/api/v1'
+
+cookbook 'sprout-base', github: 'pivotal-sprout/sprout-base'
+cookbook 'sprout-homebrew', github: 'pivotal-sprout/sprout-homebrew'
+
+cookbook 'sprout-rubymine', path: '.'
