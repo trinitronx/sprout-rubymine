@@ -1,0 +1,10 @@
+language: objective-c
+rvm: system
+install:
+  - sudo mkdir -p /var/chef/cache       # Emulate pivotal_workstation::create_var_chef for
+  - sudo chmod 0775 /var/chef/cache  # recipes that write to /var/chef/cache as a non-root user
+  - sudo gem install bundler --no-ri --no-rdoc
+  - sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle install
+script:
+  - bundle exec rake
+  - bundle exec rspec spec/integration
